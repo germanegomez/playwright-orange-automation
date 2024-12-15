@@ -10,3 +10,4 @@ test-junit-report/
 .env
 pnpm-lock.yaml
 package-lock.json
+tests-examples/
