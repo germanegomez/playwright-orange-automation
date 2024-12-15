@@ -32,19 +32,18 @@ Ensure you have the following tools and dependencies installed before proceeding
      ```
 
 7. **Scope**
-   - Configuration details to be added as needed.
+   - Install Scope via Power Shell console
 
-8. **Allure**
-   - Install Allure via Homebrew (for macOS) or from the [Allure website](https://docs.qameta.io/allure/).
-
-     ```bash
-     brew install allure
+    ```Power Shell
+     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+     irm get.scoop.sh | iex
      ```
 
-   - For Windows, use the [Chocolatey package manager](https://community.chocolatey.org/):
+8. **Allure**
+   - Install Allure via Scoop
 
      ```bash
-     choco install allure
+     scoop install allure
      ```
 
 ---
