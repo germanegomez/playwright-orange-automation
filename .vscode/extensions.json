@@ -1,20 +1,3 @@
 {
-  "recommendations": [
-    "ms-playwright.playwright",
-    "usernamehw.errorlens",
-    "dbaeumer.vscode-eslint",
-    "github.vscode-github-actions",
-    "visualstudioexptteam.vscodeintellicode",
-    "visualstudioexptteam.intellicode-api-usage-examples",
-    "xabikos.javascriptsnippets",
-    "ms-vscode.vscode-typescript-next",
-    "leizongmin.node-module-intellisense",
-    "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense",
-    "ryanrosello-og.playwright-vscode-trace-viewer",
-    "esbenp.prettier-vscode",
-    "rvest.vs-code-prettier-eslint",
-    "yoavbls.pretty-ts-errors",
-    "johnpapa.winteriscoming"
-  ]
+	"recommendations": ["ms-playwright.playwright", "usernamehw.errorlens", "dbaeumer.vscode-eslint", "github.vscode-github-actions", "visualstudioexptteam.vscodeintellicode", "visualstudioexptteam.intellicode-api-usage-examples", "xabikos.javascriptsnippets", "ms-vscode.vscode-typescript-next", "leizongmin.node-module-intellisense", "christian-kohler.npm-intellisense", "christian-kohler.path-intellisense", "ryanrosello-og.playwright-vscode-trace-viewer", "esbenp.prettier-vscode", "rvest.vs-code-prettier-eslint", "yoavbls.pretty-ts-errors", "johnpapa.winteriscoming", "davidanson.vscode-markdownlint", "kennylong.kubernetes-yaml-formatter"]
 }
