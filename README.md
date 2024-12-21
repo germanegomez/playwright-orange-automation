@@ -68,6 +68,10 @@ Follow these steps to set up the project:
    pnpm install
    ```
 
+   ```bash
+   pnpm audit
+   ```
+
 3. **Run tests**
 
    ```bash
