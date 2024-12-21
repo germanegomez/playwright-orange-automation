@@ -22,13 +22,16 @@ Ensure you have the following tools and dependencies installed before proceeding
 
 5. **nvm (Node Version Manager)**
    - Installation guide: [nvm-sh/nvm](https://github.com/nvm-sh/nvm).
+   - Windows: <https://github.com/coreybutler/nvm-windows/releases>
 
 6. **Node.js** (installed via nvm)
    - Use the following commands to install and set a Node.js version:
 
      ```bash
+     nvm list available
      nvm install <version>
      nvm use <version>
+     node -v
      ```
 
 7. **Scope**
