@@ -37,10 +37,10 @@ Ensure you have the following tools and dependencies installed before proceeding
 7. **Scope**
    - Install Scope via Power Shell console
 
-    ```Power Shell
-     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-     irm get.scoop.sh | iex
-     ```
+      ```Power Shell
+      Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+      irm get.scoop.sh | iex
+      ```
 
 8. **Allure**
    - Install Allure via Scoop
