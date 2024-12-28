@@ -9,19 +9,19 @@ This README serves as a guide to setting up, using, and maintaining the Playwrig
 Ensure you have the following tools and dependencies installed before proceeding:
 
 1. **Git**
-   - Download and install from [git-scm.com](https://git-scm.com/).
+   - Download and install from [git-scm.com](https://git-scm.com/)
 
 2. **Git Bash**
    - Included with Git installation (recommended for Windows users).
 
 3. **VSCode (Visual Studio Code)**
-   - Download and install from [code.visualstudio.com](https://code.visualstudio.com/).
+   - Download and install from [code.visualstudio.com](https://code.visualstudio.com/)
 
 4. **pnpm**
    - Install via npm: `npm install -g pnpm`
 
 5. **nvm (Node Version Manager)**
-   - Installation guide: [nvm-sh/nvm](https://github.com/nvm-sh/nvm).
+   - Installation guide: [nvm-sh/nvm](https://github.com/nvm-sh/nvm)
 
 6. **Node.js** (installed via nvm)
    - Use the following commands to install and set a Node.js version:
@@ -90,6 +90,68 @@ This section outlines the structure and organization of the repository to facili
 - Automated test cases are categorized into **smoke**, **regression**, and **end-to-end** scenarios.
 - Each feature or module has a corresponding subdirectory within `tests/`.
 - Test cases are written using Playwright's robust API.
+- Git Flow:
+   1. Create a Branch
+      - **Command:**
+
+         ```bash
+         git checkout -b type/jiraID/branch-name
+         ```
+
+      - **Naming Format:** `type/jiraID/branch-name`
+         - **Type:**
+            - `feature`: New functionality
+            - `fix`: Bug fix
+            - `docs`: Documentation
+            - `style`: Code styling
+            - `refactor`: Refactoring
+            - `test`: Tests
+            - `chore`: Maintenance
+         - **Example:**
+
+            ```bash
+            git checkout -b test/GX3-123/add-login-tests
+            ```
+
+   2. **Commit Changes**
+      - **Stage Files:**
+
+         ```bash
+         git add .
+         ```
+
+      - **Commit Message Format:**  
+         `type: (jiraID) description`
+      - **Example:**
+
+         ```bash
+         git commit -m "test: (GX3-123) add login tests"
+         ```
+
+   3. **Sync Your Branch**
+
+      - Update with the latest changes from `QA`:
+
+         ```bash
+         git pull origin QA
+         ```
+
+   4. **Push Your Branch**
+
+      - Push your branch to the remote repository:
+
+         ```bash
+         git push origin branch-name
+         ```
+
+   5. **Open a Pull Request (PR)**
+
+      - Use the predefined PR template.
+      - Include **test evidence** (screenshots, Allure reports, or pipeline links) in the "Test Results" section.
+
+   6. **Review and Merge**
+
+      - The team will review your PR. After approval, it will be merged into `QA`.
 
 ---
 
