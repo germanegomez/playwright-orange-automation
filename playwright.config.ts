@@ -44,12 +44,16 @@ export default defineConfig({
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: 'https://opensource-demo.orangehrmlive.com/web/index.php',
+
 		// Headless Mode: true by default
 		headless: false,
+
 		// Viewport Resolution
 		viewport: { width: 1920, height: 1080 },
+
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
 		actionTimeout: 0,
+
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'retain-on-failure',
 		screenshot: 'on'
