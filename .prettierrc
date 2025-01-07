@@ -9,7 +9,7 @@
 	"trailingComma": "none",
 	"bracketSameLine": true,
 	"proseWrap": "preserve",
-	"printWidth": 1000,
+	"printWidth": 200,
 	"overrides": [
 		{
 			"files": "*.json",

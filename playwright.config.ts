@@ -38,7 +38,12 @@ export default defineConfig({
 	workers: process.env.CI ? 4 : 1,
 
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: [['./tests/custom-reporter.ts'], ['html', { outputFolder: 'test-html-report/chrome', open: 'never' }], ['junit', { outputFolder: 'test-junit-report', outputFile: 'test-junit-report/chrome-importer-report.xml' }], ['allure-playwright']],
+	reporter: [
+		['./tests/custom-reporter.ts'],
+		['html', { outputFolder: 'test-html-report/chrome', open: 'never' }],
+		['junit', { outputFolder: 'test-junit-report', outputFile: 'test-junit-report/chrome-importer-report.xml' }],
+		['allure-playwright']
+	],
 
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
@@ -46,7 +51,7 @@ export default defineConfig({
 		baseURL: 'https://opensource-demo.orangehrmlive.com/web/index.php',
 
 		// Headless Mode: true by default
-		headless: false,
+		headless: true,
 
 		// Viewport Resolution
 		viewport: { width: 1920, height: 1080 },
@@ -63,7 +68,7 @@ export default defineConfig({
 	projects: [
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'], channel: 'chrome' }
+			use: { ...devices['Desktop Chrome'], channel: 'chrome', headless: true }
 		}
 	]
 });

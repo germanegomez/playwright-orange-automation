@@ -2,10 +2,10 @@ import { test } from '@TestBase';
 import { faker } from '@faker-js/faker';
 
 test.describe('GX3-5799: Admin | Agregar credenciales de usuario al empleado', () => {
-	/* 	test.beforeEach(async ({ loginPage, addUserPage }) => {
+	test.beforeEach(async ({ loginPage, addUserPage }) => {
 		await loginPage.loginSuccess();
 		await addUserPage.gotoAdminTab();
-	}); */
+	});
 
 	test('GX3-5799: TC1: Should add user credentials for employee', async ({ page, expect, addUserPage }) => {
 		await addUserPage.gotoSaveSystemUser();
@@ -25,8 +25,7 @@ test.describe('GX3-5799: Admin | Agregar credenciales de usuario al empleado', (
 		await expect(createdUserInTable).toBeVisible();
 	});
 
-	test('prueba manual de login', async ({ loginPage, addUserPage }) => {
-		await loginPage.loginSuccess();
-		await addUserPage.gotoAdminTab();
+	test('test logout', async () => {
+		console.log('Add method to logout');
 	});
 });
