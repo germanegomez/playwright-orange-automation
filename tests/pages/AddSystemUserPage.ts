@@ -26,7 +26,15 @@ export class AddSystemUserPage extends SuperPage {
 		this.saveButton = this.page.locator('button[type=submit]', { hasText: 'Save' });
 	}
 
-	async fillAddUserFields(arg?: { userRole?: 'Admin' | 'ESS'; employeeName?: string; status?: 'Enabled' | 'Disabled'; username?: string; password?: string; confirmPassword?: string }) {
+	/* prettier-ignore */
+	async fillAddUserFields(arg?: { 
+		userRole?: 'Admin' | 'ESS'; 
+		employeeName?: string; 
+		status?: 'Enabled' | 'Disabled'; 
+		username?: string; 
+		password?: string; 
+		confirmPassword?: string 
+	}) {
 		if (arg) {
 			arg.userRole && (await this.selectDropdownOption(this.userRoleOptionDropdown, arg.userRole));
 			arg.employeeName && (await this.selectDropdownInput(this.employeeNameInputDropdown, arg.employeeName));
