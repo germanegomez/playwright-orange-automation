@@ -35,9 +35,11 @@ export class SuperPage {
 	getCredentials() {
 		const username = this.username;
 		const password = this.password;
+
 		if (!username || !password) {
 			throw new Error('Missing CREDENTILAS in ENV VARS');
 		}
+
 		return { username, password };
 	}
 
