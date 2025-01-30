@@ -1,5 +1,5 @@
 #? 🧪 Este PIPELINE ejecutará tus pruebas y subirá los resultados a Jira XRay
-name: 🧪 UPEX CI/CD SanityTest Pipeline
+name: 🧪 CI/CD SanityTest Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered SanityTest on ${{ github.event.inputs.environment }}
 
 on:

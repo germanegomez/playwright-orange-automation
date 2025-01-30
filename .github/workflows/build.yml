@@ -1,5 +1,5 @@
 #* 🧪 UPEX CI Build Pipeline is to check the project build before merging
-name: 🧪 UPEX CI Build Test Pipeline
+name: 🧪 CI Build Test Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered a Build Test
 
 on:

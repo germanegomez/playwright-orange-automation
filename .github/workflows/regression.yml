@@ -1,5 +1,5 @@
 #? 🧪 Este PIPELINE ejecutará todas las pruebas y subirá los resultados a Jira XRay
-name: 🧪 UPEX CI/CD Regression Pipeline
+name: 🧪 CI/CD Regression Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered Regression on ${{ github.event.inputs.environment }}
 
 on:
