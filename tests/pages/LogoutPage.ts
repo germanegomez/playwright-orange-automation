@@ -6,6 +6,6 @@ export class LogoutPage extends SuperPage {
 
 	constructor(page: Page) {
 		super(page);
-		this.logoutButton = this.page.locator('.oxd-userdropdown-tabw');
+		this.logoutButton = this.page.locator('.oxd-userdropdown-tab');
 	}
 }
