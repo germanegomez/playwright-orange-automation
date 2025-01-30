@@ -27,7 +27,7 @@ jobs:
     - name: 💽 Installing Node.js v20
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 22
 
     - name: 🍙 Bun Setup
       uses: oven-sh/setup-bun@v2
