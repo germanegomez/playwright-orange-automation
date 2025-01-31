@@ -1,5 +1,5 @@
-name: 🧪 CI Build Test Pipeline
-run-name: ${{github.actor}}👨🏻‍🔬 triggered a Build Test
+name: CI Build Test Pipeline
+run-name: ${{github.actor}} triggered a Build Test
 
 on:
   pull_request:
@@ -19,30 +19,30 @@ jobs:
       name: ${{ github.env.TEST_ENV }}
 
     steps:
-    - name: 📘 Checkout Repo
+    - name: Checkout Repo
       uses: actions/checkout@v4
 
-    - name: 💽 Installing Node.js v20
+    - name: Installing Node.js v20
       uses: actions/setup-node@v4
       with:
         node-version: 22
 
-    - name: 🍙 Bun Setup
+    - name: Bun Setup
       uses: oven-sh/setup-bun@v2
       with:
         bun-version: latest
 
-    - name: 🧬 Install Project Dependencies
+    - name: Install Project Dependencies
       run: bun install
 
-    - name: 🔎 Run Typescript Checks
+    - name: Run Typescript Checks
       run: |
         bun run check:ts
 
-    - name: 🔎 Run Eslint Checks
+    - name: Run Eslint Checks
       run: |
         bun run eslint:check
 
-    - name: 🧪 Check Playwirght
+    - name: Check Playwirght
       run: |
         bun run ci:build

@@ -1,12 +1,12 @@
-name: 🧪 CI/CD Regression Pipeline
-run-name: ${{github.actor}}👨🏻‍🔬 triggered Regression on ${{ github.event.inputs.environment }}
+name: CI/CD Regression Pipeline
+run-name: ${{github.actor}} triggered Regression on ${{ github.event.inputs.environment }}
 
 on:
   #* manual trigger:
   workflow_dispatch:
     inputs:
       environment:
-        description: 🚀Select the Test Environment
+        description: Select the Test Environment
         required: true
         default: 'QA'
         type: choice
@@ -30,31 +30,31 @@ jobs:
       ORANGE_PASSWORD: ${{ secrets.ORANGE_PASSWORD }}
 
     steps:
-    - name: 📘 Checkout Repo
+    - name: Checkout Repo
       uses: actions/checkout@v4
 
-    - name: 💽 Installing Node.js v20
+    - name: Installing Node.js v20
       uses: actions/setup-node@v4
       with:
         node-version: 20
 
-    - name: 🍙 Bun Setup
+    - name: Bun Setup
       uses: oven-sh/setup-bun@v2
       with:
         bun-version: latest
 
-    - name: 🧬 Install Project Dependencies
+    - name: Install Project Dependencies
       run: bun install
 
-    - name: 🔎 Check Typescript Code
+    - name: Check Typescript Code
       run: |
         bun run check:ts
 
-    - name: 🧪 Playwirght Run Regresion Testing
+    - name: Playwirght Run Regresion Testing
       run: |
         bun run test
 
-    - name: 📡 Upload Artifact - EVIDENCE of Failing Tests
+    - name: Upload Artifact - EVIDENCE of Failing Tests
       if: failure()
       uses: actions/upload-artifact@v4
       with:
@@ -62,7 +62,7 @@ jobs:
         path: test-results
         retention-days: 15
 
-    - name: ✅ Import Test Results to Xray
+    - name: Import Test Results to Xray
       if: always()
       uses: mikepenz/xray-action@v3
       with:
@@ -75,7 +75,7 @@ jobs:
         testEnvironments: ${{ github.event.inputs.environment }}
 
     #* ----------------- ALLURE REPORT ----------------- #
-    - name: 📊 Get Allure Report History
+    - name: Get Allure Report History
       uses: actions/checkout@v4
       if: always()
       continue-on-error: true
@@ -83,7 +83,7 @@ jobs:
         ref: gh-pages #? the branch used for the GitHub Pages content.
         path: gh-pages #? this is the directory where the previous allure reports were stored.
 
-    - name: 📊 Build Allure Report
+    - name: Build Allure Report
       uses: simple-elf/allure-report-action@master
       if: always()
       with:
@@ -98,7 +98,7 @@ jobs:
         allure_history: allure-history #* This folder in the Repo root will be combined with given "subfolder" path in order to place the new truly "Allure Report" data!
         keep_reports: 15
 
-    - name: 🚀 Deploy Allure Report to GitHub Pages
+    - name: Deploy Allure Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
@@ -111,17 +111,3 @@ jobs:
         #? And inside it, the structure: ['data', 'export', 'history', 'plugin', 'widgets', 'app.js', 'favicon.ico', 'index.html', 'styles.css']. The actual allure-report.
         #* When user navigates to the specified URL (i.g. /beta/regression/) it will automatically open the last allure report generated as /beta/regression/1/index.html.
         keep_files: true #? REQUIRED to work properly. it will keep the files from the previous deployments. ! DON'T SET TO FALSE, it will crash the folder.
-
-  Ari-Slack-Notification:
-    needs: [ RegressionTesting ]
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🔔 Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_USERNAME: Ari✨
-        SLACK_MESSAGE: '🧪(${{ github.repository }}): ${{ github.actor }} triggered Regression Testing🚀'
-        SLACK_COLOR: ${{ needs.RegressionTesting.result }}
-        SLACK_ICON: ${{ secrets.ARI_PROFILE }}
