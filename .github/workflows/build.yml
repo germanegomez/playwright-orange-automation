@@ -1,16 +1,14 @@
-#* 🧪 UPEX CI Build Pipeline is to check the project build before merging
 name: 🧪 CI Build Test Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered a Build Test
 
 on:
-  #* 🚀 Ejecuta el PIPELINE cuando se crea un PR apuntando a QA o main
   pull_request:
     branches:
     - main
     - QA
 
 env:
-  TEST_ENV: dev # default environment for PR checks
+  TEST_ENV: dev
   ORANGE_USERNAME: ${{ secrets.ORANGE_USERNAME }}
   ORANGE_PASSWORD: ${{ secrets.ORANGE_PASSWORD }}
 
@@ -38,11 +36,11 @@ jobs:
       run: bun install
 
     - name: 🔎 Run Typescript Checks
-      run: | #? Corre el linter de TypeScript para verificar errores de sintaxis.
+      run: |
         bun run check:ts
 
     - name: 🔎 Run Eslint Checks
-      run: | #? Corre el linter de ESLint para verificar errores de sintaxis.
+      run: |
         bun run eslint:check
 
     - name: 🧪 Check Playwirght
