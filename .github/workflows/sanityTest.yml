@@ -125,7 +125,7 @@ jobs:
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_TOKEN }}
         publish_branch: gh-pages #? the branch used for the GitHub Pages content. Where to deploy the publish_dir.
         publish_dir: allure-history/${{ env.TEST_ENV }}/sanity/${{ github.event.inputs.xray_tx }} #* IMPORTANT: The NEW "Allure Report" path to be taken for Deployment. Should be {allure_history + subfolder}.
         destination_dir: ${{ env.TEST_ENV }}/sanity/${{ github.event.inputs.xray_tx }} #* IMPORTANT: Dir inside the gh-pages branch where the Deployment will be placed. Should be {subfolder}.
