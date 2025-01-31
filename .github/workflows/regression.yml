@@ -1,4 +1,3 @@
-#? 🧪 Este PIPELINE ejecutará todas las pruebas y subirá los resultados a Jira XRay
 name: 🧪 CI/CD Regression Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered Regression on ${{ github.event.inputs.environment }}
 
@@ -13,12 +12,12 @@ on:
         type: choice
         options:
         #? Orden de Deployments...
-        - dev #? donde los developers work
-        - sandbox #? donde los qa realizan smoke y exploratory testing.
-        - qa #? donde los qa realizan smoke, sanity y regression testing.
-        - staging #? donde los qa realizan smoke, sanity o regression testing.
-        - uat #? donde los beta testers realizan acceptance testing.
-        - prod #? donde los usuarios finales usan la App.
+        - dev #? where developers work locally, such as on localhost.
+        - sandbox #? where QAs perform smoke and exploratory testing.
+        - qa #? where QAs conduct all tests: smoke, sanity, and regression testing.
+        - uat #? where beta testers or clients perform acceptance testing.
+        - stage #? where QAs run additional non-functional tests.
+        - prod #? where end users interact with the application.
 
 jobs:
   RegressionTesting:
@@ -48,7 +47,7 @@ jobs:
       run: bun install
 
     - name: 🔎 Check Typescript Code
-      run: | #? Corre el linter de TypeScript para verificar errores de sintaxis.
+      run: |
         bun run check:ts
 
     - name: 🧪 Playwirght Run Regresion Testing
@@ -56,7 +55,7 @@ jobs:
         bun run test
 
     - name: 📡 Upload Artifact - EVIDENCE of Failing Tests
-      if: failure() #? will only run if the tests fail because the screenshots are only taken when the tests fail.
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: regression-test-evidence
@@ -67,13 +66,12 @@ jobs:
       if: always()
       uses: mikepenz/xray-action@v3
       with:
-        #OPCIONES PARA IMPORTAR LOS RESULTADOS DE PRUEBA A JIRA XRAY:
         username: ${{ secrets.XRAY_CLIENT_ID}}
         password: ${{ secrets.XRAY_CLIENT_SECRET}}
-        testFormat: 'junit' #! NO CAMBIAR
-        testPaths: 'test-junit-report/chrome-importer-report.xml' #! NO CAMBIAR
-        testExecKey: 'GX3-4784' #! NO CAMBIAR
-        projectKey: 'GX3' #! NO CAMBIAR
+        testFormat: 'junit'
+        testPaths: 'test-junit-report/chrome-importer-report.xml'
+        testExecKey: 'GX3-4784'
+        projectKey: 'GX3'
         testEnvironments: ${{ github.event.inputs.environment }}
 
     #* ----------------- ALLURE REPORT ----------------- #
@@ -116,7 +114,7 @@ jobs:
 
   Ari-Slack-Notification:
     needs: [ RegressionTesting ]
-    if: always() #? correrá después de que el SmokeTest y RegressionTesting hayan terminado.
+    if: always()
     runs-on: ubuntu-latest
     steps:
     - name: 🔔 Slack Notification

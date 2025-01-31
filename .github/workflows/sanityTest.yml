@@ -1,4 +1,3 @@
-#? 🧪 Este PIPELINE ejecutará tus pruebas y subirá los resultados a Jira XRay
 name: 🧪 CI/CD SanityTest Pipeline
 run-name: ${{github.actor}}👨🏻‍🔬 triggered SanityTest on ${{ github.event.inputs.environment }}
 
@@ -12,26 +11,26 @@ on:
         default: 'QA'
         type: choice
         options:
-        #? Orden de Deployments en un Proyecto de Software...
-        - dev #? donde los dev trabajan localmente, puede ser localhost
-        - qa #? donde los qa realizan todas las pruebas: smoke, sanity y regression testing.
-        - uat #? donde los beta testers o clientes realizan acceptance testing.
-        - stage #? donde los qa pueden ejecutar otras pruebas adicionales (no-funcionales).
-        - prod #? donde los usuarios finales usan la App.
+        #? Software Project Deployment Order...
+        - dev #? where developers work locally, such as on localhost.
+        - qa #? where QAs conduct all tests: smoke, sanity, and regression testing.
+        - uat #? where beta testers or clients perform acceptance testing.
+        - stage #? where QAs run additional non-functional tests.
+        - prod #? where end users interact with the application.
       test_run:
         description: 🚀Select the Test Suite to Run
         required: true
-        default: '<ingresa aquí el test path relativo>' #! No modificar, es solo un ejemplo.
+        default: '<ingresa aquí el test path relativo>'
         type: string
       xray_tx:
         description: 🚀Enter the Test Execution ID
         required: true
-        default: 'GX3-4784' #! No modificar, es solo un ejemplo.
+        default: 'GX3-4784'
         type: string
       xray_project:
         description: 🚀Select the Project Key
         required: true
-        default: 'GX3' #! No modificar, es solo un ejemplo.
+        default: 'GX3'
         type: choice
         options:
         - GX1
@@ -41,7 +40,10 @@ on:
 
 jobs:
   SanityTest:
-    #? El Pipeline "Sanity" es una estrategia de prueba perfecta para verificar que un Módulo entero de la App o una funcionalidad específica funcionen como se espera. Se puede realizar pruebas de cualquier nivel (Unit, Integration, E2E) para esta estrategia de pruebas. También se usa como "Story Testing" para ejecuciones de pruebas de cobertura de US (importar resultados a Jira XRay).
+    #? The "Sanity" Pipeline is a perfect testing strategy to verify that an entire module of the app  
+    #? or a specific functionality works as expected. Tests at any level (Unit, Integration, E2E) can be  
+    #? performed using this strategy. It is also used as "Story Testing" for US coverage test executions  
+    #? (importing results into Jira XRay).
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.environment }}
@@ -68,7 +70,7 @@ jobs:
       run: bun install
 
     - name: 🔎 Check Typescript Code
-      run: | #? Corre el linter de TypeScript para verificar errores de sintaxis.
+      run: |
         bun run check:ts
 
     - name: 🧪 Playwirght Run Sanity Test
@@ -87,7 +89,6 @@ jobs:
       if: always()
       uses: mikepenz/xray-action@v3
       with:
-        #OPCIONES PARA IMPORTAR LOS RESULTADOS DE PRUEBA A JIRA XRAY #! NO CAMBIA:
         username: ${{ secrets.XRAY_CLIENT_ID}}
         password: ${{ secrets.XRAY_CLIENT_SECRET}}
         testFormat: 'junit'
