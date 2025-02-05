@@ -62,17 +62,17 @@ jobs:
         path: test-results
         retention-days: 15
 
-    - name: Import Test Results to Xray
-      if: always()
-      uses: mikepenz/xray-action@v3
-      with:
-        username: ${{ secrets.XRAY_CLIENT_ID}}
-        password: ${{ secrets.XRAY_CLIENT_SECRET}}
-        testFormat: 'junit'
-        testPaths: 'test-junit-report/chrome-importer-report.xml'
-        testExecKey: 'GX3-4784'
-        projectKey: 'GX3'
-        testEnvironments: ${{ github.event.inputs.environment }}
+    # - name: Import Test Results to Xray
+    #   if: always()
+    #   uses: mikepenz/xray-action@v3
+    #   with:
+    #     username: ${{ secrets.XRAY_CLIENT_ID}}
+    #     password: ${{ secrets.XRAY_CLIENT_SECRET}}
+    #     testFormat: 'junit'
+    #     testPaths: 'test-junit-report/chrome-importer-report.xml'
+    #     testExecKey: 'GX3-4784'
+    #     projectKey: 'GX3'
+    #     testEnvironments: ${{ github.event.inputs.environment }}
 
     #* ----------------- ALLURE REPORT ----------------- #
     - name: Get Allure Report History
